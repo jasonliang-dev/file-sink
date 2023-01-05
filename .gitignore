@@ -1,0 +1,7 @@
+build
+msvc
+.cache
+*.sublime-project
+*.sublime-workspace
+*.pem
+*.ppk
