@@ -188,11 +188,14 @@ static void watcher_poll(FileWatcher *watcher) {
 }
 
 static std::optional<std::string> read_entire_file(const char *path) {
-  std::ifstream file;
-  file.open(path);
+  std::ifstream ifs;
+  ifs.open(path);
+  if (ifs.fail()) {
+    return std::nullopt;
+  }
 
   std::ostringstream oss;
-  oss << file.rdbuf();
+  oss << ifs.rdbuf();
   return oss.str();
 }
 
